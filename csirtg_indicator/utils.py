@@ -34,17 +34,16 @@ RE_HASH = {
 def resolve_itype(indicator, test_broken=False):
     def _ipv6(s):
         try:
-            socket.inet_pton(socket.AF_INET6, s)
-        except socket.error:
+            ipaddress.IPv6Address(s)
+        except ipaddress.AddressValueError:
             if not re.match(RE_IPV6, s):
                 return False
-
         return True
 
     def _ipv4(s):
         try:
-            socket.inet_pton(socket.AF_INET, s)
-        except socket.error:
+            ipaddress.IPv4Address(s)
+        except ipaddress.AddressValueError:
             if not re.match(RE_IPV4, s):
                 return False
         return True
