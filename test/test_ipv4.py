@@ -1,4 +1,5 @@
 from csirtg_indicator import Indicator
+from csirtg_indicator.exceptions import InvalidIndicator
 
 
 def _not(data):
@@ -38,6 +39,8 @@ def test_ipv4_nok():
         try:
             Indicator(indicator=d)
         except NotImplementedError as e:
+            pass
+        except InvalidIndicator as e:
             pass
         else:
             raise SystemError('mis-handled network')
