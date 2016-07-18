@@ -6,7 +6,7 @@ from datetime import datetime
 from urlparse import urlparse
 
 import arrow
-import pytricia
+import netaddr
 from .utils import parse_timestamp, resolve_itype, is_subdomain
 from . import VERSION
 
@@ -16,8 +16,7 @@ LOG_FORMAT = '%(asctime)s - %(levelname)s - %(name)s[%(lineno)s] - %(message)s'
 PROTOCOL_VERSION = '0.00a0'
 
 
-IPV4_PRIVATE = pytricia.PyTricia()
-IPV4_PRIVATE_NETS = [
+IPV4_PRIVATE = netaddr.IPSet([
     "0.0.0.0/8",
     "10.0.0.0/8",
     "127.0.0.0/8",
@@ -27,10 +26,7 @@ IPV4_PRIVATE_NETS = [
     "224.0.0.0/4",
     "240.0.0.0/5",
     "248.0.0.0/5"
-]
-
-for x in IPV4_PRIVATE_NETS:
-    IPV4_PRIVATE[x] = True
+])
 
 
 class Indicator(object):
