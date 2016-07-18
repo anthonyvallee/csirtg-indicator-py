@@ -123,7 +123,7 @@ class Indicator(object):
 
     def is_private(self):
         if self.itype and self.itype == 'ipv4':
-            if IPV4_PRIVATE.get(str(self.indicator)):
+            if str(self.indicator) in IPV4_PRIVATE:
                 return True
         return False
 
