@@ -34,7 +34,7 @@ RE_HASH = {
 def resolve_itype(indicator, test_broken=False):
     def _ipv6(s):
         try:
-            ipaddress.IPv6Address(s)
+            ipaddress.IPv6Address(unicode(s))
         except ipaddress.AddressValueError:
             if not re.match(RE_IPV6, s):
                 return False
@@ -42,7 +42,7 @@ def resolve_itype(indicator, test_broken=False):
 
     def _ipv4(s):
         try:
-            ipaddress.IPv4Address(s)
+            ipaddress.IPv4Address(unicode(s))
         except ipaddress.AddressValueError:
             if not re.match(RE_IPV4, s):
                 return False
