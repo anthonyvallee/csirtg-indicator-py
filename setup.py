@@ -28,7 +28,7 @@ setup(
     install_requires=[
         'arrow>=0.7.0',
         'pytest>=2.9.1',
-        'pytricia>=0.9.0',
+        'netaddr>=0.7.18',
         'ipaddress>=1.0.16',
         'pytest-cov>=2.2.1',
     ],
